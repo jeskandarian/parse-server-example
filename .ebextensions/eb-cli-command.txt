@@ -1,0 +1,5 @@
+ # no need to do this since we have the app.config set   eb create --envvars DATABASE_URI='mongodb://walkthru:eskyuujj@ds149358-a0.mlab.com:49358,ds149358-a1.mlab.com:49358/walkthru?replicaSet=rs-ds149358',APP_ID='WCl2rR1UnvuFL4Jl1Ds93UjXRsm0mk761F7TELl4'
+
+
+ eb create walkthru-parse-server
+
