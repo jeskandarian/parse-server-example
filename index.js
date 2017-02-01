@@ -15,7 +15,7 @@ var S3Adapter = require('parse-server').S3Adapter;
 var s3Adapter = new S3Adapter(
     "AKIAIGCH5R6IIZ2GO4DA",
     "ecYyhaJu1TWExeK6fyaM9m27BtQLk4Ts2yPa5Spo",
-    "walkthru-parse-images",
+    "walkthru-parse-images-dev",
     {directAccess: false}
 );
 var api = new ParseServer({
