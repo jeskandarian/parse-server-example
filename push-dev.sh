@@ -1,1 +1,1 @@
-git push heroku yourbranch:master
+git push heroku dev:master
