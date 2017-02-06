@@ -5,7 +5,7 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 
-var databaseUri = "mongodb://<dbuser>:<dbpassword>@ds031561.mlab.com:31561/walkthru-dev";
+var databaseUri = "mongodb://walkthru:walkthrudev@ds031561.mlab.com:31561/walkthru-dev";
 //process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
