@@ -43,7 +43,7 @@ Parse.Cloud.beforeDelete("Unit", function(request, response) {
     });
 });
 
-var _ = require("underscore");
+//var _ = require(["underscore"]);
 Parse.Cloud.beforeSave(Parse.User, function(request, response){
     console.error("user beforeSave");
     var maxSearchTerms = 10;
