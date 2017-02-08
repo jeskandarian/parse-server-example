@@ -8,6 +8,32 @@ Parse.Cloud.define("hello", function(request, response) {
     response.success("Hello world!");
 });
 
+Parse.Cloud.define("copyTemplates", function(request, response){
+    var fromId = request.params.fromId;
+    var toId = request.params.toId;
+    console.log("copyTemplates from '" + fromId + "' to '" + toId + "'");
+
+    var fromCompany = new Company();
+    fromCompany.id = fromId;
+    var toCompany = new Company();
+    toCompany.id = toId;
+
+    var templateWalkthruQuery = new Parse.Query("templateWalkthru");
+    templateWalkthruQuery.include("name");
+    query.equalTo("company", fromCompany);
+    query.find({
+        success:function(results){
+            for(var i=0;i<results.length;i++){
+                var walkthruTemplate = results[i];
+                var newWalkthruTempate = new walkthruTemplate();
+                newWalkthruTempate.set("name", walkthruTemplate.name);
+                newWalkthruTempate.set("company", toCompany);
+                newWalkthruTempate.save();
+
+            }
+        }
+    })
+});
 Parse.Cloud.beforeDelete("Park", function(request, response) {
     var query = new Parse.Query("Unit");
     query.equalTo("park", request.object);
@@ -191,5 +217,4 @@ Parse.Cloud.job("searchTermUserMigration", function(request, status){
             console.log(error);
         }
     })
-
 });
