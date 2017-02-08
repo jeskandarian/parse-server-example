@@ -13,9 +13,9 @@ Parse.Cloud.define("copyTemplates", function(request, response){
     var toId = request.params.toId;
     console.log("copyTemplates from '" + fromId + "' to '" + toId + "'");
 
-    var fromCompany = new Company();
+    var fromCompany = Parse.object.extend("Company");
+    var toCompany = Parse.object.extend("Company");
     fromCompany.id = fromId;
-    var toCompany = new Company();
     toCompany.id = toId;
 
     var templateWalkthruQuery = new Parse.Query("templateWalkthru");
