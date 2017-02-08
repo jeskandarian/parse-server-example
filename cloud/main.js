@@ -14,6 +14,7 @@ Parse.Cloud.define("copyTemplates", function(request, response){
     console.log("copyTemplates from '" + fromId + "' to '" + toId + "'");
 
     var Company = Parse.Object.extend("Company");
+    var TemplateWalkthru = Parse.Object.extend("templateWalkthru");
     var toCompany = new Company();
     var fromCompany = new Company();
     fromCompany.id = fromId;
@@ -21,15 +22,15 @@ Parse.Cloud.define("copyTemplates", function(request, response){
 
     var templateWalkthruQuery = new Parse.Query("templateWalkthru");
     templateWalkthruQuery.include("name");
-    query.equalTo("company", fromCompany);
-    query.find({
+    templateWalkthruQuery.equalTo("company", fromCompany);
+    templateWalkthruQuery.find({
         success:function(results){
             for(var i=0;i<results.length;i++){
-                var walkthruTemplate = results[i];
-                var newWalkthruTempate = new walkthruTemplate();
-                newWalkthruTempate.set("name", walkthruTemplate.name);
-                newWalkthruTempate.set("company", toCompany);
-                newWalkthruTempate.save();
+                var workingTemplateWalkthru = results[i];
+                var newTemplateWalkthru = new TemplateWalkthru();
+                newTemplateWalkthru.set("name", workingTemplateWalkthru.name);
+                newTemplateWalkthru.set("company", toCompany);
+                newTemplateWalkthru.save();
 
             }
         }
