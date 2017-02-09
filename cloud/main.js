@@ -42,8 +42,8 @@ Parse.Cloud.define("copyTemplates", function (request, response) {
 
         }
     });
-}
-    
+});
+
 Parse.Cloud.beforeDelete("Park", function (request, response) {
     var query = new Parse.Query("Unit");
     query.equalTo("park", request.object);
