@@ -19,9 +19,9 @@ Parse.Cloud.define("copyTemplates", function (request, response) {
     toCompany.id = toId;
 
     var templateWalkthruQuery = new Parse.Query("templateWalkthru");
-    templateWalkthruQuery.include("name");
     templateWalkthruQuery.equalTo("company", fromCompany);
-    templateWalkthruQuery.find({
+    templateWalkthruQuery.include("name");
+    templateWalkthruQuery.fetch({
         success: function (results) {
             console.log("copyTemplates: results.length=" + result.length);
             for (var i = 0; i < results.length; i++) {
